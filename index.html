@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grey's Hidden Levantine — Full Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --dark: #1a1210;
+      --darker: #120d0b;
+      --brown: #2e1f14;
+      --gold: #c9a96e;
+      --gold-light: #e8c98a;
+      --gold-dim: #8a6e44;
+      --cream: #f5eed8;
+      --text: #ddd0b3;
+      --muted: #9a8a6a;
+      --divider: rgba(201,169,110,0.3);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--darker);
+      background-image:
+        radial-gradient(ellipse at 20% 20%, rgba(46,31,20,0.8) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(30,15,10,0.9) 0%, transparent 60%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      color: var(--text);
+      font-family: 'Cormorant Garamond', serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Grain overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 60px 24px 40px;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      display: block;
+      width: 200px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto;
+    }
+
+    .pine-icon {
+      font-size: 1.4rem;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 18px;
+      animation: flicker 4s ease-in-out infinite;
+    }
+
+    @keyframes flicker {
+      0%,100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 7vw, 3.6rem);
+      font-weight: 600;
+      color: var(--gold-light);
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      text-shadow: 0 0 40px rgba(201,169,110,0.25);
+      margin-bottom: 10px;
+    }
+
+    .hero .subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.65rem, 2vw, 0.85rem);
+      letter-spacing: 0.25em;
+      color: var(--gold-dim);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero .tagline {
+      font-style: italic;
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+    }
+
+    /* ── Ritual statement ── */
+    .ritual-banner {
+      background: linear-gradient(135deg, rgba(46,31,20,0.9), rgba(26,18,16,0.95));
+      border-top: 1px solid var(--divider);
+      border-bottom: 1px solid var(--divider);
+      padding: 28px 24px;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .ritual-banner p {
+      font-style: italic;
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      color: var(--cream);
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto 12px;
+    }
+
+    .ritual-banner .statement {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.05rem, 3.2vw, 1.45rem);
+      color: var(--gold-light);
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      line-height: 1.5;
+    }
+
+    /* ── Sections ── */
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section {
+      margin-bottom: 52px;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.3rem, 4vw, 1.9rem);
+      color: var(--gold-light);
+      font-weight: 600;
+      margin-bottom: 6px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-price {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      color: var(--gold);
+      display: inline;
+    }
+
+    .section-intro {
+      font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 24px;
+      line-height: 1.65;
+    }
+
+    .gold-rule {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+      margin: 16px 0 24px;
+    }
+
+    /* ── Daily Menu Items ── */
+    .day-list { list-style: none; }
+
+    .day-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 0 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(201,169,110,0.1);
+      align-items: start;
+    }
+
+    .day-item:last-child { border-bottom: none; }
+
+    .day-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      color: var(--gold-dim);
+      text-transform: uppercase;
+      padding-top: 4px;
+    }
+
+    .day-dish {
+      font-style: italic;
+      font-size: clamp(1.05rem, 2.8vw, 1.2rem);
+      color: var(--cream);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .day-desc {
+      font-size: clamp(0.82rem, 2vw, 0.92rem);
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* ── Mezze Grid ── */
+    .mezze-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .mezze-card {
+      background: linear-gradient(145deg, rgba(46,31,20,0.7), rgba(26,18,16,0.8));
+      border: 1px solid var(--divider);
+      border-radius: 2px;
+      padding: 20px 18px;
+      position: relative;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .mezze-card:hover {
+      border-color: var(--gold-dim);
+      transform: translateY(-3px);
+    }
+
+    .mezze-card::before {
+      content: '◆';
+      color: var(--gold-dim);
+      font-size: 0.65rem;
+      position: absolute;
+      top: 14px;
+      right: 16px;
+    }
+
+    .mezze-name {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.8rem, 2vw, 0.95rem);
+      color: var(--gold-light);
+      font-weight: 600;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .mezze-desc {
+      font-size: clamp(0.82rem, 2vw, 0.9rem);
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.55;
+    }
+
+    .mezze-price-tag {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      border: 1px solid var(--divider);
+      padding: 4px 10px;
+      margin-bottom: 18px;
+    }
+
+    /* ── Pizza Feature ── */
+    .pizza-feature {
+      background: linear-gradient(135deg, rgba(46,31,20,0.85), rgba(20,14,10,0.95));
+      border: 1px solid var(--divider);
+      border-radius: 2px;
+      padding: 28px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pizza-feature::before {
+      content: '';
+      position: absolute;
+      top: -40px; left: -40px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(201,169,110,0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .pizza-name {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.3rem, 4.5vw, 2rem);
+      color: var(--gold-light);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+      text-shadow: 0 0 30px rgba(201,169,110,0.3);
+    }
+
+    .pizza-sub {
+      font-style: italic;
+      color: var(--muted);
+      font-size: clamp(0.9rem, 2.3vw, 1rem);
+      margin-bottom: 14px;
+    }
+
+    .pizza-price {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+      color: var(--gold);
+    }
+
+    /* ── Meal Prep ── */
+    .features-list { list-style: none; }
+
+    .features-list li {
+      padding: 8px 0;
+      padding-left: 22px;
+      position: relative;
+      font-size: clamp(0.9rem, 2.3vw, 1rem);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .features-list li::before {
+      content: '◆';
+      color: var(--gold-dim);
+      font-size: 0.55rem;
+      position: absolute;
+      left: 0;
+      top: 10px;
+    }
+
+    /* ── Speakeasy CTA ── */
+    .speakeasy-block {
+      background: linear-gradient(135deg, rgba(60,35,15,0.7), rgba(20,12,8,0.9));
+      border: 1px solid var(--gold-dim);
+      border-radius: 2px;
+      padding: 32px 24px;
+      text-align: center;
+      position: relative;
+    }
+
+    .speakeasy-block::before,
+    .speakeasy-block::after {
+      content: '✦';
+      color: var(--gold-dim);
+      position: absolute;
+      top: 14px;
+      font-size: 0.8rem;
+    }
+    .speakeasy-block::before { left: 18px; }
+    .speakeasy-block::after { right: 18px; }
+
+    .speakeasy-block h3 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1rem, 3vw, 1.35rem);
+      color: var(--gold-light);
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .speakeasy-block p {
+      font-style: italic;
+      color: var(--muted);
+      font-size: clamp(0.9rem, 2.3vw, 1rem);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .btn-speakeasy {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--darker);
+      background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+      padding: 12px 28px;
+      text-decoration: none;
+      transition: opacity 0.25s, transform 0.25s;
+      border-radius: 1px;
+    }
+
+    .btn-speakeasy:hover {
+      opacity: 0.88;
+      transform: translateY(-2px);
+    }
+
+    /* ── Payment ── */
+    .payment-section {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .payment-section h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1rem, 3vw, 1.25rem);
+      color: var(--gold-dim);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .payment-grid {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .payment-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .payment-item a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .qr-box {
+      width: 90px;
+      height: 90px;
+      background: var(--cream);
+      border: 2px solid var(--gold-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    .payment-item a:hover .qr-box {
+      border-color: var(--gold-light);
+      transform: scale(1.04);
+    }
+
+    .qr-box svg { width: 100%; height: 100%; }
+
+    .payment-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--gold-dim);
+      text-transform: uppercase;
+    }
+
+    .payment-handle {
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* ── Order CTA ── */
+    .order-cta {
+      text-align: center;
+      padding: 40px 20px 20px;
+      border-top: 1px solid var(--divider);
+    }
+
+    .order-cta .order-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      color: var(--gold-dim);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .order-cta .phone {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.5rem, 5vw, 2.4rem);
+      color: var(--gold-light);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-shadow: 0 0 30px rgba(201,169,110,0.2);
+    }
+
+    .order-cta .phone a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ── Footer signature ── */
+    footer {
+      text-align: center;
+      padding: 28px 20px 40px;
+    }
+
+    .signature {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.5rem, 5vw, 2.2rem);
+      color: var(--gold-dim);
+      opacity: 0.7;
+    }
+
+    /* ── Decorative dividers ── */
+    .ornament {
+      text-align: center;
+      color: var(--gold-dim);
+      font-size: 0.75rem;
+      letter-spacing: 0.5em;
+      margin: 8px 0 28px;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <span class="pine-icon">🌲</span>
+  <h1>Grey's Hidden Levantine</h1>
+  <p class="subtitle">A Private Culinary Experience</p>
+  <hr class="gold-rule" style="max-width:280px;margin:0 auto 18px;">
+  <p class="tagline">Authentic Lebanese cuisine, prepared with intention, ritual, and heritage.</p>
+</div>
+
+<!-- ── RITUAL BANNER ── -->
+<div class="ritual-banner">
+  <p>Each dish is prepared in a calm, intentional environment, inspired by the philosophy of Reiki — crafted not only to nourish the body, but to restore balance and elevate the senses.</p>
+  <p class="statement">This is not meal prep.<br>This is ritual dining, delivered.</p>
+</div>
+
+<div class="container">
+
+  <!-- ── DAILY SIGNATURE ── -->
+  <section>
+    <h2 class="section-title">Daily Signature Offering &nbsp;<span class="section-price">$19.99</span></h2>
+    <hr class="gold-rule">
+    <p class="section-intro">A rotating menu inspired by Beirut's hidden kitchens and timeless street flavors.</p>
+    <ul class="day-list">
+      <li class="day-item">
+        <span class="day-label">Monday</span>
+        <div>
+          <p class="day-dish">Alleyway Okra with Chicken</p>
+          <p class="day-desc">Slowly simmered, deeply spiced, served with vermicelli rice</p>
+        </div>
+      </li>
+      <li class="day-item">
+        <span class="day-label">Tuesday</span>
+        <div>
+          <p class="day-dish">Fairouz Oven-Baked Kofta</p>
+          <p class="day-desc">Heritage recipe of turkey meat, potato, onion &amp; tomato, served with vermicelli rice</p>
+        </div>
+      </li>
+      <li class="day-item">
+        <span class="day-label">Wednesday</span>
+        <div>
+          <p class="day-dish">The Silk Road Chicken</p>
+          <p class="day-desc">Wings &amp; drumsticks with hummus &amp; fatoush</p>
+        </div>
+      </li>
+      <li class="day-item">
+        <span class="day-label">Thursday</span>
+        <div>
+          <p class="day-dish">Back-Alley Chicken Shish Tawook Sandwich</p>
+          <p class="day-desc">Charcoal-grilled chicken, wrapped and refined</p>
+        </div>
+      </li>
+      <li class="day-item">
+        <span class="day-label">Friday</span>
+        <div>
+          <p class="day-dish">Street-Side Chicken Shawarma Sandwich</p>
+          <p class="day-desc">Street-style, elevated, served with fatoush</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ── YALLA HABIBI PIZZA ── -->
+  <section>
+    <div class="pizza-feature">
+      <p class="pizza-name">✦ Yalla Habibi Pizza ✦</p>
+      <p class="pizza-sub">half shawarma, half falafel</p>
+      <p class="pizza-price">$29.99</p>
+    </div>
+  </section>
+
+  <!-- ── MEZZE ── -->
+  <section>
+    <h2 class="section-title">Levantine Mezze Collection</h2>
+    <hr class="gold-rule">
+    <span class="mezze-price-tag">$10 each</span>
+    <div class="mezze-grid">
+      <div class="mezze-card">
+        <p class="mezze-name">The Hidden Gem Hummus</p>
+        <p class="mezze-desc">One-of-a-kind Lebanese hummus with rich texture and flavor</p>
+      </div>
+      <div class="mezze-card">
+        <p class="mezze-name">Midnight in Lebanon Baba Ghanouj</p>
+        <p class="mezze-desc">A smokey, spicy roasted eggplant and tahini spread</p>
+      </div>
+      <div class="mezze-card">
+        <p class="mezze-name">The Secret Garden of Lebanese Fattoush</p>
+        <p class="mezze-desc">A fresh and zesty salad of vegetables</p>
+      </div>
+      <div class="mezze-card">
+        <p class="mezze-name">Under The Table Tabouleh</p>
+        <p class="mezze-desc">Authentic village Lebanese style of Bekaa Valley</p>
+      </div>
+      <div class="mezze-card">
+        <p class="mezze-name">Prohibition Falafel</p>
+        <p class="mezze-desc">Crispy on the outside, vibrant green on the inside, served with our "hush-hush" tahini sauce</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WEEKLY MEAL PREP ── -->
+  <section>
+    <h2 class="section-title">Weekly Organic Meal Prep &nbsp;<span class="section-price">$90 Weekly</span></h2>
+    <hr class="gold-rule">
+    <p class="section-intro">A curated selection of organic Lebanese meals, delivered with precision and care.</p>
+    <ul class="features-list">
+      <li>Organic ingredients only</li>
+      <li>Small-batch preparation</li>
+      <li>Designed for balance, energy, and elegance</li>
+    </ul>
+  </section>
+
+  <!-- ── SPEAKEASY ── -->
+  <section>
+    <div class="speakeasy-block">
+      <h3>Behind Closed Doors</h3>
+      <p>A Reiki-Infused Lebanese Speakeasy Dinner — a private, immersive experience for those called to the table.</p>
+      <a class="btn-speakeasy" href="https://www.eventbrite.com/e/behind-closed-doors-a-reiki-infused-lebanese-speakeasy-dinner-tickets-1987281133366?aff=oddtdtcreator" target="_blank" rel="noopener">Reserve Your Seat</a>
+    </div>
+  </section>
+
+</div><!-- /container -->
+
+<!-- ── PAYMENT ── -->
+<div class="payment-section">
+  <h2>Secure Payment</h2>
+  <div class="payment-grid">
+
+    <div class="payment-item">
+      <a href="https://cash.app/$ancientwhitewitch" target="_blank" rel="noopener">
+        <div class="qr-box">
+          <!-- QR code for Cash App $ancientwhitewitch -->
+          <svg viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" style="background:#fff;padding:1px">
+            <rect width="21" height="21" fill="#fff"/>
+            <!-- Finder pattern TL -->
+            <rect x="1" y="1" width="7" height="7" fill="#000" rx="1"/>
+            <rect x="2" y="2" width="5" height="5" fill="#fff" rx="0.5"/>
+            <rect x="3" y="3" width="3" height="3" fill="#000"/>
+            <!-- Finder pattern TR -->
+            <rect x="13" y="1" width="7" height="7" fill="#000" rx="1"/>
+            <rect x="14" y="2" width="5" height="5" fill="#fff" rx="0.5"/>
+            <rect x="15" y="3" width="3" height="3" fill="#000"/>
+            <!-- Finder pattern BL -->
+            <rect x="1" y="13" width="7" height="7" fill="#000" rx="1"/>
+            <rect x="2" y="14" width="5" height="5" fill="#fff" rx="0.5"/>
+            <rect x="3" y="15" width="3" height="3" fill="#000"/>
+            <!-- Timing / data pixels (simplified representation) -->
+            <rect x="9" y="1" width="1" height="1" fill="#000"/>
+            <rect x="9" y="3" width="1" height="1" fill="#000"/>
+            <rect x="9" y="5" width="1" height="1" fill="#000"/>
+            <rect x="1" y="9" width="1" height="1" fill="#000"/>
+            <rect x="3" y="9" width="1" height="1" fill="#000"/>
+            <rect x="5" y="9" width="1" height="1" fill="#000"/>
+            <rect x="7" y="9" width="1" height="1" fill="#000"/>
+            <rect x="9" y="9" width="1" height="1" fill="#000"/>
+            <rect x="11" y="9" width="1" height="1" fill="#000"/>
+            <rect x="10" y="11" width="2" height="1" fill="#000"/>
+            <rect x="13" y="9" width="1" height="1" fill="#000"/>
+            <rect x="15" y="9" width="1" height="1" fill="#000"/>
+            <rect x="17" y="9" width="1" height="1" fill="#000"/>
+            <rect x="19" y="9" width="1" height="1" fill="#000"/>
+            <rect x="9" y="13" width="1" height="2" fill="#000"/>
+            <rect x="11" y="13" width="2" height="1" fill="#000"/>
+            <rect x="9" y="19" width="2" height="1" fill="#000"/>
+            <rect x="12" y="15" width="1" height="2" fill="#000"/>
+            <rect x="14" y="14" width="1" height="1" fill="#000"/>
+            <rect x="16" y="15" width="2" height="1" fill="#000"/>
+            <rect x="14" y="17" width="3" height="1" fill="#000"/>
+            <rect x="18" y="16" width="1" height="3" fill="#000"/>
+            <rect x="11" y="17" width="1" height="3" fill="#000"/>
+            <rect x="13" y="19" width="2" height="1" fill="#000"/>
+          </svg>
+        </div>
+        <span class="payment-label">Cash App</span>
+        <span class="payment-handle">$ancientwhitewitch</span>
+      </a>
+    </div>
+
+    <div class="payment-item">
+      <a href="https://paypal.me/graceaj81" target="_blank" rel="noopener">
+        <div class="qr-box">
+          <!-- QR code for PayPal grace.aj81 -->
+          <svg viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" style="background:#fff;padding:1px">
+            <rect width="21" height="21" fill="#fff"/>
+            <rect x="1" y="1" width="7" height="7" fill="#000" rx="1"/>
+            <rect x="2" y="2" width="5" height="5" fill="#fff" rx="0.5"/>
+            <rect x="3" y="3" width="3" height="3" fill="#000"/>
+            <rect x="13" y="1" width="7" height="7" fill="#000" rx="1"/>
+            <rect x="14" y="2" width="5" height="5" fill="#fff" rx="0.5"/>
+            <rect x="15" y="3" width="3" height="3" fill="#000"/>
+            <rect x="1" y="13" width="7" height="7" fill="#000" rx="1"/>
+            <rect x="2" y="14" width="5" height="5" fill="#fff" rx="0.5"/>
+            <rect x="3" y="15" width="3" height="3" fill="#000"/>
+            <rect x="9" y="1" width="1" height="1" fill="#000"/>
+            <rect x="11" y="1" width="1" height="1" fill="#000"/>
+            <rect x="9" y="3" width="2" height="1" fill="#000"/>
+            <rect x="9" y="5" width="1" height="1" fill="#000"/>
+            <rect x="11" y="5" width="1" height="1" fill="#000"/>
+            <rect x="9" y="7" width="1" height="1" fill="#000"/>
+            <rect x="1" y="9" width="2" height="1" fill="#000"/>
+            <rect x="5" y="9" width="1" height="1" fill="#000"/>
+            <rect x="8" y="9" width="2" height="1" fill="#000"/>
+            <rect x="12" y="9" width="1" height="1" fill="#000"/>
+            <rect x="14" y="9" width="2" height="1" fill="#000"/>
+            <rect x="19" y="9" width="1" height="1" fill="#000"/>
+            <rect x="9" y="11" width="1" height="2" fill="#000"/>
+            <rect x="12" y="11" width="2" height="1" fill="#000"/>
+            <rect x="16" y="11" width="1" height="2" fill="#000"/>
+            <rect x="11" y="13" width="1" height="1" fill="#000"/>
+            <rect x="13" y="13" width="3" height="1" fill="#000"/>
+            <rect x="18" y="13" width="2" height="1" fill="#000"/>
+            <rect x="9" y="15" width="2" height="2" fill="#000"/>
+            <rect x="13" y="15" width="1" height="1" fill="#000"/>
+            <rect x="15" y="14" width="2" height="2" fill="#000"/>
+            <rect x="9" y="19" width="3" height="1" fill="#000"/>
+            <rect x="14" y="18" width="1" height="2" fill="#000"/>
+            <rect x="17" y="17" width="2" height="3" fill="#000"/>
+          </svg>
+        </div>
+        <span class="payment-label">PayPal</span>
+        <span class="payment-handle">grace.aj81</span>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── ORDER CTA ── -->
+<div class="order-cta">
+  <p class="order-label">Text to Order</p>
+  <p class="phone"><a href="sms:6312122211">631-212-2211</a></p>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <hr class="gold-rule" style="max-width:260px;margin:0 auto 20px;">
+  <div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+  <p class="signature">Homemade with love</p>
+</footer>
+
+<script>
+  // Intersection Observer for scroll-reveal
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

@@ -59,28 +59,42 @@
       margin: 0 auto;
     }
 
-    .pine-icon {
-      font-size: 1.4rem;
-      color: var(--gold);
+    .logo-img {
+      width: clamp(80px, 18vw, 130px);
       display: block;
-      margin-bottom: 18px;
-      animation: flicker 4s ease-in-out infinite;
+      margin: 0 auto 22px;
+      animation: fadeIn 1.2s ease;
+      filter: drop-shadow(0 0 18px rgba(201,169,110,0.18));
     }
-
-    @keyframes flicker {
-      0%,100% { opacity: 1; }
-      50% { opacity: 0.7; }
+ 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-12px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
-
+ 
     .hero h1 {
       font-family: 'Cinzel', serif;
-      font-size: clamp(2rem, 7vw, 3.6rem);
       font-weight: 600;
       color: var(--gold-light);
-      letter-spacing: 0.04em;
-      line-height: 1.15;
-      text-shadow: 0 0 40px rgba(201,169,110,0.25);
-      margin-bottom: 10px;
+      letter-spacing: 0.1em;
+      line-height: 1.2;
+      text-shadow: 0 0 40px rgba(201,169,110,0.22);
+      margin-bottom: 12px;
+    }
+ 
+    .hero h1 .line1 {
+      display: block;
+      font-size: clamp(2.4rem, 9vw, 4.8rem);
+    }
+ 
+    .hero h1 .line2 {
+      display: block;
+      font-size: clamp(1.05rem, 3.8vw, 2.05rem);
+      letter-spacing: 0.45em;
+      color: var(--gold-dim);
+      font-weight: 400;
+      margin-top: 4px;
+  
     }
 
     .hero .subtitle {
@@ -524,12 +538,10 @@
 <!-- ── HERO ── -->
 <div class="hero">
   <img src="logo.jpg" alt="Grey's" class="logo-img" />
-  <h1>
-    <span class="line1">Grey's</span>
-  </h1>
-  <h2>
-    <span class="line2">Hidden Levantine</span>
-  </h2>
+ <h1 class="brand">
+  <span class="line1">GREY’S</span>
+  <span class="line2">HIDDEN LEVANTINE</span>
+</h1>
   <p class="subtitle">A Private Culinary Experience</p>
   <hr class="gold-rule" style="max-width:280px;margin:0 auto 18px;">
   <p class="tagline">Authentic Lebanese cuisine, prepared with intention, ritual, and heritage.</p>
